@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Prompt Sidebar",
+  "version": "1.1",
+  "description": "右侧提示词面板，支持卡片管理与光标处注入",
+  "permissions": ["storage", "activeTab", "scripting", "sidePanel"],
+  "host_permissions": ["<all_urls>"],
+  "icons": {
+    "16": "icon128.png",
+    "48": "icon128.png",
+    "128": "icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_title": "打开/关闭提示词面板",
+    "default_icon": {
+      "16": "icon128.png",
+      "48": "icon128.png",
+      "128": "icon128.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
